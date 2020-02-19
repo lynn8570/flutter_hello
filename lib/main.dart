@@ -42,9 +42,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    Color color = Theme
-        .of(context)
-        .primaryColor;
+    Color color = Theme.of(context).primaryColor;
 
     Widget buttonSection = Container(
       child: Row(
@@ -57,16 +55,16 @@ class MyApp extends StatelessWidget {
       ),
     );
 
-
-    Widget textSection = Container(padding: const EdgeInsets.all(32),
+    Widget textSection = Container(
+      padding: const EdgeInsets.all(32),
       child: Text(
         'dsaljdljalsjljlfjldjlsfjldjslfjlsdjfldsjflsjdlfjl,文章的内容区域，'
-            'Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese '
-            'Alps. Situated 1,578 meters above sea level, it is one of the '
-            'larger Alpine Lakes. A gondola ride from Kandersteg, followed by a '
-            'half-hour walk through pastures and pine forest, leads you to the '
-            'lake, which warms to 20 degrees Celsius in the summer. Activities '
-            'enjoyed here include rowing, and riding the summer toboggan run.',
+        'Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese '
+        'Alps. Situated 1,578 meters above sea level, it is one of the '
+        'larger Alpine Lakes. A gondola ride from Kandersteg, followed by a '
+        'half-hour walk through pastures and pine forest, leads you to the '
+        'lake, which warms to 20 degrees Celsius in the summer. Activities '
+        'enjoyed here include rowing, and riding the summer toboggan run.',
         softWrap: true,
       ),
     );
@@ -81,6 +79,12 @@ class MyApp extends StatelessWidget {
         ),
         body: Column(
           children: <Widget>[
+            Image.asset(
+              'images/lake.jpg',
+              width: 600,
+              height: 240,
+              fit: BoxFit.cover,
+            ),
             titleSection,
             buttonSection,
             textSection,
@@ -105,10 +109,7 @@ class MyApp extends StatelessWidget {
           child: Text(
             label,
             style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w400,
-                color: color
-            ),
+                fontSize: 12, fontWeight: FontWeight.w400, color: color),
           ),
         )
       ],
