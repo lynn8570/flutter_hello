@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hello/widget/FavoriteWidget.dart';
+import 'package:flutter_hello/widget/TapboxA.dart';
 
 void main() => runApp(MyApp());
 
@@ -90,6 +91,7 @@ class MyApp extends StatelessWidget {
             titleSection,
             buttonSection,
             textSection,
+            TapboxA(),
           ],
         ),
       ),
