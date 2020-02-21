@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hello/page/page2.dart';
 import 'package:flutter_hello/widget/FavoriteWidget.dart';
 import 'package:flutter_hello/widget/ParentWidget.dart';
 import 'package:flutter_hello/widget/TapboxA.dart';
@@ -38,10 +39,19 @@ class MyApp extends StatelessWidget {
 //          color: Colors.red[500],
 //        ),
 //        Text('41'),
-      FavoriteWidget()
+        FavoriteWidget()
       ],
     ),
   );
+
+  Route _createRoute() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => Page2(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return child;
+      },
+    );
+  }
 
   // This widget is the root of your application.
   @override
@@ -93,8 +103,15 @@ class MyApp extends StatelessWidget {
             buttonSection,
             textSection,
             TapboxA(),
-
             ParentWidget(),
+            Builder(
+              builder: (context) => RaisedButton(
+                child: Text('Go!'),
+                onPressed: () {
+                  Navigator.of(context).push(_createRoute());  //需要一个context，
+                },
+              ),
+            )
           ],
         ),
       ),
