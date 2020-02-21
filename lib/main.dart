@@ -50,7 +50,10 @@ class MyApp extends StatelessWidget {
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = Offset(0.0, 1.0);  //从底部
         var end = Offset.zero; //到顶部
-        var tween = Tween(begin: begin, end: end); //线性的变化
+        var curve = Curves.ease;
+
+//        var tween = Tween(begin: begin, end: end); //线性的变化
+        var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
         var offsetAnimation = animation.drive(tween);
         return SlideTransition(
           //添加动画
