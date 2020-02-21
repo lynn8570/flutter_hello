@@ -48,7 +48,15 @@ class MyApp extends StatelessWidget {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => Page2(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        return child;
+        var begin = Offset(0.0, 1.0);  //从底部
+        var end = Offset.zero; //到顶部
+        var tween = Tween(begin: begin, end: end); //线性的变化
+        var offsetAnimation = animation.drive(tween);
+        return SlideTransition(
+          //添加动画
+          position: offsetAnimation,
+          child: child,
+        );
       },
     );
   }
@@ -108,7 +116,7 @@ class MyApp extends StatelessWidget {
               builder: (context) => RaisedButton(
                 child: Text('Go!'),
                 onPressed: () {
-                  Navigator.of(context).push(_createRoute());  //需要一个context，
+                  Navigator.of(context).push(_createRoute()); //需要一个context，
                 },
               ),
             )
