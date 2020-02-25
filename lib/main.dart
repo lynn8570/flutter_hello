@@ -48,12 +48,13 @@ class MyApp extends StatelessWidget {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => Page2(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        var begin = Offset(0.0, 1.0);  //从底部
+        var begin = Offset(0.0, 1.0); //从底部
         var end = Offset.zero; //到顶部
         var curve = Curves.ease;
 
 //        var tween = Tween(begin: begin, end: end); //线性的变化
-        var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
         var offsetAnimation = animation.drive(tween);
         return SlideTransition(
           //添加动画
@@ -101,6 +102,35 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text("title text"),
+        ),
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              DrawerHeader(
+                child: Text('Drawer Header'),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                ),
+              ),
+              ListTile(
+                title: Text('Item 1'),
+                onTap: () {
+                  //Navigator operation requested with a context that does not include a Navigator.
+                  Navigator.pop(context);
+                },
+              ),
+              Builder(
+                // 注意和1的区别
+                builder: (context) => ListTile(
+                  title: Text('Item 2'),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              )
+            ],
+          ),
         ),
         body: ListView(
           children: <Widget>[
