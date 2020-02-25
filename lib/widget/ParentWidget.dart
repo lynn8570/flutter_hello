@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hello/page/page_fade.dart';
 import 'package:flutter_hello/widget/TapboxB.dart';
 
 class ParentWidget extends StatefulWidget {
@@ -15,8 +16,15 @@ class _ParentWidgetState extends State<ParentWidget> {
     setState(() {
       _active = newValue;
     });
-  }
 
+    Navigator.of(context).push(_createRoute());
+
+  }
+  Route _createRoute() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => FadePage(),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
