@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hello/page/page_animated_container.dart';
 
 
 class TapboxA extends StatefulWidget {
@@ -9,7 +10,8 @@ class TapboxA extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _TapboxAstate();
-  }}
+  }
+}
 
 
 //state 放在 widget中
@@ -20,6 +22,13 @@ class _TapboxAstate extends State<TapboxA> {
     setState(() {
       _active = !_active;
     });
+    Navigator.of(context).push(_createRoute());
+  }
+
+  Route _createRoute() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, Navigator) => AnimatedContainerPage(),
+    );
   }
 
   @override

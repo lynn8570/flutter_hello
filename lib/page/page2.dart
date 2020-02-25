@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';
 
+/**
+ * 拖拽可以移动icon，松开，返回中心位置
+ */
 class Page2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text("可移动的icon"),
+      ),
       body: DraggableCard(
         child: FlutterLogo(
           size: 128,
